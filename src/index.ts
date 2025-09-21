@@ -12,12 +12,8 @@ const HOST = process.env.HOST || '127.0.0.1';
 
 const app: Application = express();
 
-const allowedOrigins = [
-  'http://localhost:4173',
-  'http://127.0.0.1:4173',
-  'https://fruitkha.shop',
-  'https://www.fruitkha.shop'
-];
+const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? '').split(',').map((el) => el.trim()).filter(Boolean);
+
 app.use(cors({
   origin(origin, cb) {
     if (!origin || allowedOrigins.includes(origin)) {
