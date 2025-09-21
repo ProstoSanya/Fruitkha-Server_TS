@@ -20,7 +20,6 @@ const allowedOrigins = [
 ];
 app.use(cors({
   origin(origin, cb) {
-    console.log('\r\n >>> Origin:', origin); ///  || allowedOrigins.find((allowed) => origin.indexOf(allowed) === 0)
     if (!origin || allowedOrigins.includes(origin)) {
       return cb(null, true);
     }
